@@ -13,7 +13,7 @@ import { ArticleComponent } from './article/article.component';
   declarations: [
     AppComponent,
     MainPageComponent,
-    ArticleComponent
+    ArticleComponent,
     EditionFormComponent,
     MainPageComponent
   ],
