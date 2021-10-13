@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <form #editor_form="ngForm">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">From</label>
+                <input appHighlight name="from" type="text" class="form-control" required [(ngModel)]="readerForm.from" 
+                placeholder="Jonas van Doorn" #from="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                [ngClass]="from.valid || from.pristine ? '': 'bg-danger'">
+            </div>
+            <div class="alert alert-danger" *ngIf="from.touched && !from.valid">
+              <div *ngIf="from.errors?.pattern">Email does not match upm account.</div>
+          </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">To</label>
+                <input appHighlight class="form-control" required [(ngModel)]="readerForm.to" name="to" #to="ngModel" 
+                type="text" placeholder="Guillermo"
+                [ngClass]="to.valid || to.pristine ? '': 'bg-danger'">
+            </div>
+            <div class="alert alert-danger" *ngIf="to.touched && !to.valid">
+              <div *ngIf="to.errors?.required">Email is required.</div>
+          </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Subject</label>
+                <input
+                required
+                appHighlight 
+                name="title" 
+                #title="ngModel"  
+                 type="text" 
+                 class="form-control" 
+                 [ngClass] = "readerForm.title.length < 50 ? '':'bg-danger' "
+                 [(ngModel)]="readerForm.title" 
+                 id="InputSubject" 
+                 placeholder="Title"
+                 >
+            </div>
+            <div class="alert alert-danger" *ngIf="title.touched && !title.valid">
+              <div *ngIf="title.errors?.required">Title is required.</div>
+          </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Body</label>
+                <textarea appHighlight name="body" class="form-control" [(ngModel)]="readerForm.body" id="InputBody"></textarea>
+            </div>
+          
+          <button class="btn btn-primary btn-sm mr-1" type="submit" [disabled]="!studentForm.form.valid" >Submit Form
+          </button>
+
+              <button class="btn btn-primary btn-sm mr-1" type="button" (click)="clear()">Clean</button>
+              <button class="btn btn-primary btn-sm mr-1" type="button" (click)="reset_form()">Reset Form</button>
+
+            </form>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            From: {{ readerForm.from  }}
+          </div>
+          <div class="col-sm">
+            To: {{ readerForm.to }}
+          </div>
+          <div class="col-sm">
+            Subject: {{ readerForm.title }}
+          </div>
+          <div class="col-sm">
+            Text area: {{ readerForm.body }} 
+          </div>
+        </div>
+      </div>
+      <div>
+        Filter: <input type="text" class="form-control" [(ngModel)]="search_string">
+        Checkbox: <input type="checkbox" [(ngModel)]="withBody">
+      </div>
+      
+      <div>
+        <ul class="list-group">
+        <li *ngFor="let element of readerFormList | filter:search_string | mypipe:withBody" class="list-group-item">
+          {{element.from }}, {{element.to}}, {{ element.title}}, {{ element.body}}
+        </li>
+      </ul>
+      </div>
+    </body>
+<footer>
+
+</footer>
+</html>
