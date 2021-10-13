@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
