@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Article } from './article';
+import { Article } from '../interfaces/article';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   // Set the corresponding APIKEY accordig to the received by email
-  private APIKEY: string;
+  private APIKEY!: string;
   private APIKEY_ANON = 'xxxxxx';
 
   private httpOptions = {

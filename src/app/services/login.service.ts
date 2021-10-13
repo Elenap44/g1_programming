@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../interfaces/user';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -10,11 +10,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export class LoginService {
 
-  private user: User;
+  private user!: User;
 
   private loginUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/login';
 
-  private message: string;
+  private message!: string;
 
   private httpOptions = {
     headers: new HttpHeaders()
@@ -44,13 +44,13 @@ export class LoginService {
   }
 
   logout() {
-    this.user = null;
+    this.user = "";
   }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.user = null;
+      this.user = "";
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
