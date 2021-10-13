@@ -24,7 +24,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   isLogged() {
-    return this.user != null;
+    return this.user!= null;
   }
 
   login(name: string, pwd: string): Observable<User> {
@@ -44,13 +44,13 @@ export class LoginService {
   }
 
   logout() {
-    this.user = "";
+    this.user = {username: "", password: "", firstName: ""};
   }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.user = "";
+      this.user = {username: "", password: "", firstName: ""};
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
