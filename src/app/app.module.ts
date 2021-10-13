@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditionFormComponent } from './edition-form/edition-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainPageComponent,
+    ArticleComponent
     EditionFormComponent,
     MainPageComponent
   ],
