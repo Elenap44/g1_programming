@@ -1,4 +1,5 @@
-export interface Address {
+export interface Article {
+    id: string;
     title: string;
     subtitle: string;
     abstract: string; 
