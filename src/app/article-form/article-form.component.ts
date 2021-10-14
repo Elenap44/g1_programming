@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edition-form',
-  templateUrl: './edition-form.component.html',
-  styleUrls: ['./edition-form.component.css']
+  selector: 'app-article-form',
+  templateUrl: './article-form.component.html',
+  styleUrls: ['./article-form.component.css']
 })
-export class EditionFormComponent implements OnInit {
+export class ArticleFormComponent implements OnInit {
 
   constructor() { }
 
