@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditionFormComponent } from './edition-form.component';
+import { EditionFormComponent } from './article-form.component';
 
 describe('EditionFormComponent', () => {
   let component: EditionFormComponent;
