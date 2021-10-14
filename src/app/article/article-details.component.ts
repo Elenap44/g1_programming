@@ -7,7 +7,7 @@ import { Article } from '../interfaces/article';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-
+  article!: Article;
   constructor() { }
 
   ngOnInit(): void {
