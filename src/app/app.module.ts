@@ -8,13 +8,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleComponent } from './article/article.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { ArticleViewComponent } from './article-view/article-view.component';
+import { ArticleListComponent } from './article-list/article-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     ArticleFormComponent,
-    MainPageComponent
+    MainPageComponent,
+    LogInComponent,
+    ArticleViewComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,

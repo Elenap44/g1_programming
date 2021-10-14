@@ -13,10 +13,7 @@ export class MainPageComponent implements OnInit {
   username!: string;
   password!: string;
 
-  constructor(
-  ) { 
-    
-  }
+  constructor() { }
 
   ngOnInit(): void {
     
