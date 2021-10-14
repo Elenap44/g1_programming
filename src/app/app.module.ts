@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ArticleComponent } from './article/article.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LogInComponent } from './log-in/log-in.component';
@@ -15,7 +15,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent,
+    ArticleDetailsComponent,
     ArticleFormComponent,
     MainPageComponent,
     LogInComponent,

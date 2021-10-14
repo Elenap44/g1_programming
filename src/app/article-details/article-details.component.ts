@@ -6,7 +6,7 @@ import { Article } from '../interfaces/article';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleDetailsComponent implements OnInit {
   article!: Article;
   constructor() { }
 
