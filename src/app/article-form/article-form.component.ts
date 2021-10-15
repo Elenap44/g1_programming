@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Article } from '../interfaces/article';
 
 @Component({
   selector: 'app-article-form',
@@ -7,7 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleFormComponent implements OnInit {
 
-  constructor() { }
+  article: Article;
+  @ViewChild('articleForm') articleForm: any;
+
+  constructor() {
+    this.article = {
+      id: 0,
+      image_media_type: "",
+      image_data: "",
+      image: "",
+      title: "",
+      subtitle: "",
+      category: "",
+      abstract: "",
+      body: "",
+      thumbnail_image: "",
+      thumbnail_image_type: "",
+      file_input: ""
+    };
+   }
 
   ngOnInit(): void {
   }
