@@ -1,1 +1,33 @@
-<div *ngFor="let category of categoryList" class="button" (click)="setCategory(category)" [ngClass]="category===selectedCategory ? 'active': 'inactive'">{{category}}</div>
+<div *ngFor="let category of categoryList" class="button" (click)="setCategory(category)"
+[ngClass]="category===selectedCategory ? 'active': 'inactive'">{{category}}</div>
+
+<button type="button" (click)="...">New Article</button>
+<div class="container">
+    <div class="row">
+      <div class="col" *ngFor="let article of articleList | filterOnCategory:selectedCategory">
+        <div>
+            <img *ngIf="article.thumbnail_image" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
+            [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_image " alt="Article thumbnail">
+        </div>
+        <div>
+            <h4 [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"  class="title">{{article.title}}</h4>
+              <div class="subtitle">{{article.category}}</div>
+              <p class="text">{{article.abstract}}</p>
+
+        </div>
+        <ng-template #isLoggedIn>
+            <div class="align-self-end">
+              <button [routerLink]="['/articleForm/'+ article.id]" class="button">Edit</button>
+              <button (click)="deleteArticle(article)" class="button">Delete</button>
+            </div>
+          </ng-template> 
+    </div>
+    </div>
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div>
