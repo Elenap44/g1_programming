@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { LogInComponent } from './log-in/log-in.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CategoryPipe } from './pipes/category.pipe';
@@ -19,7 +18,6 @@ import { CategoryPipe } from './pipes/category.pipe';
     ArticleDetailsComponent,
     ArticleFormComponent,
     MainPageComponent,
-    LogInComponent,
     ArticleViewComponent,
     ArticleListComponent,
     CategoryPipe
