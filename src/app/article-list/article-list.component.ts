@@ -62,4 +62,5 @@ export class ArticleListComponent implements OnInit {
     this.getServerArticles();
   }
 
+
 }
