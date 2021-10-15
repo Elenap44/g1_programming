@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export class LoginService {
 
-  private user!: User;
+  private user?: User;
 
   private loginUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/login';
 
@@ -30,7 +30,7 @@ export class LoginService {
   login(name: string, pwd: string): Observable<User> {
     const usereq = new HttpParams()
       .set('username', name)
-      .set('password', pwd);
+      .set('passwd', pwd);
 
     return this.http.post<User>(this.loginUrl, usereq).pipe(
       tap(user => {
@@ -44,13 +44,13 @@ export class LoginService {
   }
 
   logout() {
-    this.user = {username: "", password: "", firstName: ""};
+    this.user = undefined;
   }
 
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.user = {username: "", password: "", firstName: ""};
+      this.user = undefined;
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 

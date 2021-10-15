@@ -11,6 +11,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategoryPipe } from './pipes/category.pipe';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

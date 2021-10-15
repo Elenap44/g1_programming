@@ -1,11 +1,23 @@
 <div class="p-5 text-center">
   <a [routerLink]="''" class=""><h1> Newspaper Group 1 </h1></a>
-  <form class="d-flex">
-    <input class="form-control me-2" type="text" placeholder="Username" [(ngModel)]="username" name="username" required/>
-    <input class="form-control me-2" type="password" placeholder="Password" [(ngModel)]="password" name="password" required/>
-    <button class="btn btn-warning" type="submit">Login</button>
-  </form> 
+    <div id="logIn" *ngIf="!loginService.isLogged(); else logged">
+        <form #loginForm="ngForm" class="text-center">
+            <input class="form-control me-2" type="text" placeholder="Username" [(ngModel)]="user.username" #username='ngModel' name="username" required/>
+            <input class="form-control me-2" type="password" placeholder="Password" [(ngModel)]="user.password" #password='ngModel' name="password" required/>
+            <button class="btn btn-warning" type="submit" (click)="login()">Login</button>
+        </form>
+    </div>
+
+    <ng-template #logged>
+        <div class="text-center">
+            <span class="px-2">Welcome {{loginService.getUser()?.username}}</span>
+            <button class="btn btn-warning" type="submit" (click)="loginService.logout()">Sign out</button>
+        </div>
+    </ng-template>
 </div>
 
+
+
+ 
 
   

@@ -6,10 +6,8 @@ export interface Article {
     subtitle: string;
     abstract: string; 
     body: string;
-    image: string;
     category: string;
     thumbnail_image: string;
     thumbnail_image_type: string;
     file_input: any;
-
 }

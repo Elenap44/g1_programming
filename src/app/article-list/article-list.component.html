@@ -4,10 +4,10 @@
 <button type="button" (click)="''">New Article</button>
 <div class="container">
   <div class="row">
-    <div class="col" *ngFor="let article of articleList | filterOnCategory:selectedCategory">
+    <div class="col" *ngFor="let article of articleList | category:selectedCategory">
       <div>
           <img *ngIf="article.thumbnail_image" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
-          [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_image " alt="Article thumbnail">
+          [src]="'data:' + article.thumbnail_image_type + ';base64,'+article.thumbnail_image " alt="Article thumbnail">
       </div>
       <div>
           <h4 [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"  class="title">{{article.title}}</h4>

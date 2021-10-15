@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from '../interfaces/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from '../services/login.service';
+import { User } from '../interfaces/user'
+
 
 
 @Component({
@@ -11,13 +12,27 @@ import { LoginService } from '../services/login.service';
 export class MainPageComponent implements OnInit {
 
   user!: User;
-  username!: string;
-  password!: string;
+  @ViewChild('loginForm') loginForm: any;
 
-  constructor() { }
+  constructor(public loginService: LoginService ) {
+    this.user = {
+      username: "DEV_TEAM_01",
+      password: "123401"
+    };
+   }
 
   ngOnInit(): void {
-    
+  }
+
+  login() {
+    this.loginService.login(this.user.username, this.user.password).subscribe(
+      () => {
+        console.log('User login');
+      },
+      err => {
+        console.log('Error');
+      }
+    )
   }
 
 }

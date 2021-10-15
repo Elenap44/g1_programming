@@ -16,7 +16,6 @@ export class ArticleFormComponent implements OnInit {
       id: 0,
       image_media_type: "",
       image_data: "",
-      image: "",
       title: "",
       subtitle: "",
       category: "",

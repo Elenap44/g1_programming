@@ -26,7 +26,6 @@ export class ArticleListComponent implements OnInit {
     subtitle: "",
     abstract: "", 
     body: "",
-    image: "",
     category: "",
     thumbnail_image: "",
     thumbnail_image_type: "",
