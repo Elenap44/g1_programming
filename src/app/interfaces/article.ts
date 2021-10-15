@@ -1,5 +1,5 @@
 export interface Article {
-    id: string;
+    id: number;
     image_media_type: string;
     image_data: string;
     title: string;
@@ -8,4 +8,8 @@ export interface Article {
     body: string;
     image: string;
     category: string;
+    thumbnail_image: string;
+    thumbnail_image_type: string;
+    file_input: any;
+
 }

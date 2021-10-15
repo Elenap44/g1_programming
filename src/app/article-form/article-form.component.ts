@@ -13,7 +13,7 @@ export class ArticleFormComponent implements OnInit {
 
   constructor() {
     this.article = {
-      id: "",
+      id: 0,
       image_media_type: "",
       image_data: "",
       image: "",
@@ -21,7 +21,10 @@ export class ArticleFormComponent implements OnInit {
       subtitle: "",
       category: "",
       abstract: "",
-      body: ""
+      body: "",
+      thumbnail_image: "",
+      thumbnail_image_type: "",
+      file_input: ""
     };
    }
 
