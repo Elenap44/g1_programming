@@ -11,6 +11,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { ArticleViewComponent } from './article-view/article-view.component';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { CategoryPipe } from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
     MainPageComponent,
     LogInComponent,
     ArticleViewComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
