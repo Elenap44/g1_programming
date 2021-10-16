@@ -21,8 +21,8 @@ export class ArticleFormComponent implements OnInit {
       category: "",
       abstract: "",
       body: "",
-      thumbnail_image: "",
-      thumbnail_image_type: "",
+      thumbnail_data: "",
+      thumbnail_media_type: "",
       file_input: ""
     };
    }

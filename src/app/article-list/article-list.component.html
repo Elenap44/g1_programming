@@ -17,6 +17,7 @@
       *ngFor="let article of articleList | category: selectedCategory"
     >
       <div>
+<<<<<<< HEAD
         <img
           *ngIf="article.thumbnail_image"
           [routerLink]="['/articleView/' + article.id]"
@@ -29,6 +30,10 @@
           "
           alt="Article thumbnail"
         />
+=======
+          <img *ngIf="article.thumbnail_data" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
+          [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_data " alt="Article thumbnail">
+>>>>>>> 82b6f91708694f65bd904b8ed360a8d93c23cb3d
       </div>
       <div>
         <h4
