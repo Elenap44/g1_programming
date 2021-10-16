@@ -10,7 +10,7 @@ import { NewsService } from '../services/news.service';
 })
 export class ArticleListComponent implements OnInit {
 
-  categoryList: string[]= ['All', 'National', 'Sports', 'Technology', 'Economy'];
+  categoryList: string[]= ['All', 'National', 'Economy', 'Sports', 'Technology'];
   selectedCategory!: string;
   articleList!: Article[];
   article!: Article;
@@ -27,8 +27,8 @@ export class ArticleListComponent implements OnInit {
     abstract: "", 
     body: "",
     category: "",
-    thumbnail_image: "",
-    thumbnail_image_type: "",
+    thumbnail_data: "",
+    thumbnail_media_type: "",
     file_input: ""
     }
     this.articleList= [this.article];
