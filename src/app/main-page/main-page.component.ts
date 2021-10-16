@@ -34,5 +34,11 @@ export class MainPageComponent implements OnInit {
       }
     )
   }
+  
+  alert (): void {
+    if(this.user.username != 'DEV_TEAM_01'||this.user.password != '123401'){
+    window.alert('The username or password is not correct.');
+    }
+  }
 
 }

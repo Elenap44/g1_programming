@@ -67,11 +67,13 @@ export class ArticleListComponent implements OnInit {
             this.alerts.push({
               message: 'Error, the article has not been deleted',
             });
-            this.getServerArticles();
-          },()=>{
-          }
-      );
+            this.getServerArticles(); },
+            ()=>{
+              console.log('The article has been deleted');
+            }
+        );
+      }
     }
-  }
+  
 
 }
