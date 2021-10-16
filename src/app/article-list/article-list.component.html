@@ -1,4 +1,4 @@
-<div class="container">
+
 <div class="col-12 p-3"><div
   *ngFor="let category of categoryList"
   class="btn btn-secondary m-2"
@@ -8,8 +8,10 @@
   {{ category }}
   </div>
 
-<button type="button" class="btn btn-primary" (click)="('')">New Article</button>
-</div>
+  <div id="logIn" *ngIf="loginService.isLogged()">
+    <button type="button" class="btn btn-primary" (click)="('')">New Article</button>
+  </div>
+
 <div class="container">
   <div class="row">
     <div class="card col-lg-4 col-md-6 col-sm-12" *ngFor="let article of articleList | category: selectedCategory">
