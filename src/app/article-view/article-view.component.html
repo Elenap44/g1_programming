@@ -6,8 +6,21 @@
     <p id="articleBody">this is body text this is body text this is body text this is body text this is body text</p>
 </article> -->
 
-<div class="alert alert-success alert-dismissable" *ngIf="article">
+<!--<div class="alert alert-success alert-dismissable" *ngIf="article">
 
 {{article.id}}
 {{article.title}}
-</div>
+</div> -->
+
+<div class="mb-3 col">
+    <!-- <h5>Title</h5> -->
+    <h2 class="text-center">{{ article.title }} <br /></h2>
+    <h4 class="text-center">Image comes here</h4>
+    <br />
+    <!-- <h5>Subtitle</h5> -->
+    <h3 class="text-center">{{ article.subtitle }} <br /></h3>
+    <!-- <h5>Abstract</h5> -->
+    <p>{{ article.abstract }} <br /></p>
+    <!-- <h5>Body</h5> -->
+    <p>{{ article.body }} <br /></p>
+  </div>

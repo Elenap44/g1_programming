@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Article } from '../interfaces/article';
 import { ActivatedRoute, Router } from '@angular/router'
 import { NewsService } from '../services/news.service';
+import { Alerts } from '../interfaces/alerts'
 
 
 @Component({
@@ -10,33 +11,46 @@ import { NewsService } from '../services/news.service';
   styleUrls: ['./article-view.component.css']
 })
 export class ArticleViewComponent implements OnInit {
+  
   article!: Article;
-  articleList!: Article[];
-  message!: string;
-  constructor(public route: ActivatedRoute, private NsService: NewsService) {
+  @ViewChild('articleForm') articleForm: any;
+  alerts!: Alerts[];
+
+  constructor(public newsService: NewsService, public router: Router, public route: ActivatedRoute) {
+    this.article = {
+      id: 0, title: "", subtitle: "", category: "", abstract: "", body: "", image_data: "", image_media_type: "",
+      thumbnail_image: "", thumbnail_media_type: "", file_input: "" 
+    };
+    this.alerts = [];
    }
 
    ngOnInit(): void {
-    this.article = {
-      id: this.route.snapshot.params['ArticleId'],
-      title: this.route.snapshot.params['ArticleTitle'],
-      subtitle: this.route.snapshot.params['ArticleSubtitle'],
-      category: this.route.snapshot.params['ArticleCategory'],
-      abstract: this.route.snapshot.params['ArticleAbstract'], 
-      body: this.route.snapshot.params['ArticleBody'],
-      image_data: this.route.snapshot.params['ArticleImage'],
-      image_media_type: "",
-      thumbnail_image: "",
-      thumbnail_media_type: "",
-      file_input: ""
-    }
+    this.route.paramMap.subscribe(p => {
+      const pId = p.get('articleId');
+      if(pId != null){
+        this.newsService.getArticle(+pId).subscribe(
+          article => {
+            this.article = article;
+            this.article.file_input = this.article.image_data;
+          },
+          error => { 
+          },
+          () => { 
+          }
+        );
+      }
+    })
+  }
 
     // in app-routing.module.ts:   { path: 'articleView/:articleId/:articleTitle/:articleSubtitle/:articleBody/:articleAbstract/:articleImage', component: ArticleViewComponent },
 
   }
+
+
+
   
 
-}
+  
 
 
 
