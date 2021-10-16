@@ -29,7 +29,7 @@ export class ArticleListComponent implements OnInit {
     body: "",
     image_data: "",
     image_media_type: "",
-    thumbnail_data: "",
+    thumbnail_image: "",
     thumbnail_media_type: "",
     file_input: ""
     };

@@ -22,7 +22,7 @@ export class ArticleFormComponent implements OnInit {
   constructor(public newsService: NewsService, public router: Router, public route: ActivatedRoute) {
     this.article = {
       id: 0, title: "", subtitle: "", category: "", abstract: "", body: "", image_data: "", image_media_type: "",
-      thumbnail_data: "", thumbnail_media_type: "", file_input: "" 
+      thumbnail_image: "", thumbnail_media_type: "", file_input: "" 
     };
     this.alerts = [];
     this.cardImageBase64;
