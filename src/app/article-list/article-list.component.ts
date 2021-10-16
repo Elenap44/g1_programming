@@ -13,6 +13,7 @@ export class ArticleListComponent implements OnInit {
 
   categoryList: string[]= ['All', 'National', 'Economy', 'Sports', 'Technology'];
   selectedCategory!: string;
+  term: string;
   articleList!: Article[];
   article!: Article;
   alerts!: Alerts[];
@@ -35,6 +36,7 @@ export class ArticleListComponent implements OnInit {
     };
 
     this.articleList= [this.article];
+    this.term = "";
 
   }
 
