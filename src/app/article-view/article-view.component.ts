@@ -22,7 +22,7 @@ export class ArticleViewComponent implements OnInit {
       title: this.route.snapshot.params['ArticleTitle'],
       subtitle: this.route.snapshot.params['ArticleSubtitle'],
       category: this.route.snapshot.params['ArticleCategory'],
-      abstract: this.route.snapshot.params['ArticleAbastract'], 
+      abstract: this.route.snapshot.params['ArticleAbstract'], 
       body: this.route.snapshot.params['ArticleBody'],
       image_data: this.route.snapshot.params['ArticleImage'],
       image_media_type: "",

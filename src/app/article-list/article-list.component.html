@@ -2,17 +2,14 @@
 <div class="col-12 p-3">
   Search: <input type="text" class="form-control" [(ngModel)]="term">
 </div>
-<div class="col-12 p-3"><div
-  *ngFor="let category of categoryList"
-  class="btn btn-secondary m-2"
-  (click)="setCategory(category)"
-  [ngClass]="category === selectedCategory ? 'active' : 'inactive'"
->
+<div class="col-12 p-3">
+  <div *ngFor="let category of categoryList" class="btn btn-secondary m-2" 
+  (click)="setCategory(category)" [ngClass]="category === selectedCategory ? 'active' : 'inactive'" >
   {{ category }}
   </div>
 
   <div id="logIn" *ngIf="loginService.isLogged()">
-    <button type="button" class="btn btn-primary" (click)="('')">New Article</button>
+      <button [routerLink]="['/articleForm/']" type="button" class="btn btn-primary" >New Article</button>
   </div>
 
 <div class="container">
