@@ -7,7 +7,7 @@
   {{ category }}
 </div>
 
-
+<div id="logIn" *ngIf="!loginService.isLogged(); else logged">
 <button type="button" class="btn btn-primary" (click)="('')">New Article</button>
 </div>
 <div class="container">
@@ -32,15 +32,12 @@
         <p class="text">{{ article.abstract }}</p>
       </div>
       <ng-template #isLoggedIn>
-        <div class="align-self-end">
-          <button [routerLink]="['/articleForm/' + article.id]" class="button">
-            Edit
-          </button>
-          <button (click)="deleteArticle(article)" class="button">
-            Delete
-          </button>
-        </div>
-      </ng-template>
-    </div>
+          <div class="align-self-end">
+            <button [routerLink]="['/articleForm/'+ article.id]" class="button">Edit</button>
+            <button (click)="deleteArticle(article)" class="button">Delete</button>
+          </div>
+        </ng-template> 
   </div>
+  </div>
+
 </div>
