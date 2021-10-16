@@ -68,7 +68,7 @@ export class ArticleListComponent implements OnInit {
                 type: 'danger',
                 alertMessage: 'The article has not been deleted',
               });
-              console.log('error in deletion of article');
+              console.log('There was an error with the article, it has not been deleted');
               console.log(error);
               this.getServerArticles();
             },()=>{
