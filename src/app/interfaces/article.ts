@@ -1,13 +1,13 @@
 export interface Article {
     id: number;
-    image_media_type: string;
-    image_data: string;
     title: string;
     subtitle: string;
+    category: string;
     abstract: string; 
     body: string;
-    category: string;
-    thumbnail_image: string;
-    thumbnail_image_type: string;
+    image_data: string;
+    image_media_type: string;
+    thumbnail_data: string;
+    thumbnail_media_type: string;
     file_input: any;
 }
