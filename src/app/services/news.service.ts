@@ -51,7 +51,7 @@ export class NewsService {
   //  "update_date":...,
   //  "category":...,
   //  "title":...,
-  //  "thumbnail_data":...,
+  //  "thumbnail_image":...,
   //  "thumbnail_media_type":...}
 
   getArticles(): Observable<Article[]> {

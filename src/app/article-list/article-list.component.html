@@ -1,34 +1,46 @@
-<div class="col-12 p-3">
-  <div *ngFor="let category of categoryList" class="btn btn-secondary m-2" (click)="setCategory(category)"
-  [ngClass]="category === selectedCategory ? 'active' : 'inactive'">
+
+<div class="col-12 p-3"><div
+  *ngFor="let category of categoryList"
+  class="btn btn-secondary m-2"
+  (click)="setCategory(category)"
+  [ngClass]="category === selectedCategory ? 'active' : 'inactive'"
+>
   {{ category }}
   </div>
 
   <div id="logIn" *ngIf="loginService.isLogged()">
     <button type="button" class="btn btn-primary" (click)="('')">New Article</button>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let article of articleList | category: selectedCategory" >
-        <div>
-            <img *ngIf="article.thumbnail_data" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
-            [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_data " alt="Article thumbnail">
-        </div>
-        <div>
-          <h4 [routerLink]="['/articleView/' + article.id]" [ngClass]="{ 'router-link-active': true }" class="title">
-            {{ article.title }}
-          </h4>
-          <div class="subtitle">{{ article.category }}</div>
-          <p class="text">{{ article.abstract }}</p>
-        </div>
-        <ng-template #logged>
-            <div class="align-self-end">
-              <button [routerLink]="['/articleForm/'+ article.id]" class="button">Edit</button>
-              <button (click)="deleteArticle(article)" class="button">Delete</button>
-            </div>
-        </ng-template> 
+
+<div class="container">
+  <div class="row">
+    <div class="card col-lg-4 col-md-6 col-sm-12" *ngFor="let article of articleList | category: selectedCategory">
+      <div>
+          <img *ngIf="article.thumbnail_image" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
+          [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_image " alt="Article thumbnail" class="card-img-top">
       </div>
+      <div class="card-body">
+        <h4 [routerLink]="['/articleView/' + article.id]" [ngClass]="{ 'router-link-active': true }" class="title">
+          {{ article.title }}
+        </h4>
+        <h6 class="subtitle">{{ article.category }}</h6>
+        <p class="card-text">{{ article.abstract }}</p>
+        
+        <ng-template #isLoggedIn>
+          <div class="align-self-end">
+            <button [routerLink]="['/articleForm/' + article.id]" class=" btn btn-secondary">
+              Edit
+            </button>
+            <button (click)="deleteArticle(article)" class="btn btn-danger">
+              Delete
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      
     </div>
 
   </div>
+</div>
+
 </div>
