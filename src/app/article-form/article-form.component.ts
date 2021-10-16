@@ -13,6 +13,7 @@ import * as _ from 'lodash';
 export class ArticleFormComponent implements OnInit {
 
   article: Article;
+  articleList!: Article[];
   @ViewChild('articleForm') articleForm: any;
   alerts: Alerts[];
   imageError!: string | null;
@@ -21,8 +22,17 @@ export class ArticleFormComponent implements OnInit {
 
   constructor(public newsService: NewsService, public router: Router, public route: ActivatedRoute) {
     this.article = {
-      id: 0, title: "", subtitle: "", category: "", abstract: "", body: "", image_data: "", image_media_type: "",
-      thumbnail_image: "", thumbnail_media_type: "", file_input: "" 
+      id: 0,
+      title: "",
+      subtitle: "",
+      category: "",
+      abstract: "",
+      body: "",
+      image_data: "",
+      image_media_type: "",
+      thumbnail_image: "",
+      thumbnail_media_type: "",
+      file_input: "" 
     };
     this.alerts = [];
     this.cardImageBase64;
@@ -58,7 +68,7 @@ export class ArticleFormComponent implements OnInit {
             message: 'Article has been created'
           });
         },
-        error => { // Error treatment
+        error => { 
           this.alerts.push({
             message: 'Error, article was not created',
           });
