@@ -4,7 +4,7 @@
         <form #loginForm="ngForm" class="text-center">
             <input class="form-control me-2" type="text" placeholder="Username" [(ngModel)]="user.username" #username='ngModel' name="username" required/>
             <input class="form-control me-2" type="password" placeholder="Password" [(ngModel)]="user.password" #password='ngModel' name="password" required/>
-            <button class="btn btn-warning m-2" type="submit" (click)="login()">Login</button>
+            <button class="btn btn-warning m-2" type="submit" (click)="login()" (click)="alert()">Login</button>
         </form>
     </div>
 
@@ -21,4 +21,3 @@
 
  
 
-  

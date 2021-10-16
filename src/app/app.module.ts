@@ -12,6 +12,7 @@ import { ArticleViewComponent } from './article-view/article-view.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { CategoryPipe } from './pipes/category.pipe';
 import { HttpClientModule } from "@angular/common/http";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    Ng2SearchPipeModule,
     FormsModule,
     HttpClientModule
   ],
