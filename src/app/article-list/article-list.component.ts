@@ -54,17 +54,29 @@ export class ArticleListComponent implements OnInit {
     this.selectedCategory = category;
   }
 
-  deleteArticle(article:Article){
-    if(confirm("Do you want to delete this article?")){
-      this.newNewsService.deleteArticle(article).subscribe(article=>{this.alerts.push({
-        alertMessage:'Article deleted' });
-      this.getServerArticles()},
-      error=>{
-        this.alerts.push({
-          
-        })
-      }
 
+    
+    deleteArticle(article:Article) {
+      if(confirm("Do you want to delete this article: " + article.title + " ?" )) {
+        this.newNewsService.deleteArticle(article).subscribe(article => { 
+            this.alerts.push({
+              type: 'success',
+              alertMessage: 'Article deleted',
+            });
+            this.getServerArticles(); },
+            error => {
+              this.alerts.push({
+                type: 'danger',
+                alertMessage: 'The article has not been deleted',
+              });
+              console.log('error in deletion of article');
+              console.log(error);
+              this.getServerArticles();
+            },()=>{
+              console.log('The article has been deleted');
+            }
+        );
+      }
     }
   }
 
