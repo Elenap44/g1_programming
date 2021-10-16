@@ -57,7 +57,7 @@ export class ArticleListComponent implements OnInit {
 
     
   deleteArticle(article:Article) {
-    if(confirm("Do you want to delete this article: " + article.title + " ?" )) {
+    if(confirm("Do you want to delete the article: " + article.title + " ?" )) {
       this.newsService.deleteArticle(article).subscribe(article => { 
           this.alerts.push({
             message: 'The article has been deleted',
