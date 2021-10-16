@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../interfaces/article';
+import { Alert } from '../interfaces/alert'
 import { LoginService } from '../services/login.service';
 import { NewsService } from '../services/news.service';
 
@@ -14,9 +15,11 @@ export class ArticleListComponent implements OnInit {
   selectedCategory!: string;
   articleList!: Article[];
   article!: Article;
+  alerts!: Alert[];
 
   constructor(public loginService: LoginService, public newsService: NewsService) { 
     this.selectedCategory= 'All';
+    
     this.article = {
     id: 0,
     title: "",
@@ -26,7 +29,7 @@ export class ArticleListComponent implements OnInit {
     body: "",
     image_data: "",
     image_media_type: "",
-    thumbnail_data: "",
+    thumbnail_image: "",
     thumbnail_media_type: "",
     file_input: ""
     };
@@ -50,15 +53,28 @@ export class ArticleListComponent implements OnInit {
     this.selectedCategory = category;
   }
 
-  deleteArticle(article:Article){ //?????????????? TODO 
-    let notification;
-    this.newsService.deleteArticle(article).subscribe(i=>{
-      notification = i
-      console.log(i)
-    });
-    console.log(notification)
-    this.getServerArticles();
+    
+  deleteArticle(article:Article) {
+    if(confirm("Do you want to delete this article: " + article.title + " ?" )) {
+      this.newsService.deleteArticle(article).subscribe(article => { 
+          this.alerts.push({
+            type: 'success',
+            alertMessage: 'Article deleted',
+          });
+          this.getServerArticles(); },
+          error => {
+            this.alerts.push({
+              type: 'danger',
+              alertMessage: 'The article has not been deleted',
+            });
+            console.log('error in deletion of article');
+            console.log(error);
+            this.getServerArticles();
+          },()=>{
+            console.log('The article has been deleted');
+          }
+      );
+    }
   }
-
 
 }
