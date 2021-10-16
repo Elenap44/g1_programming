@@ -15,10 +15,11 @@
 <div class="mb-3 col">
     <!-- <h5>Title</h5> -->
     <h2 class="text-center">{{ article.title }} <br /></h2>
-    <h4 class="text-center">Image comes here</h4>
+    <img [src]="'data:' + article.image_media_type + ';base64,'+article.image_data " alt="article image" class="rounded mx-auto d-block">
     <br />
     <!-- <h5>Subtitle</h5> -->
     <h3 class="text-center">{{ article.subtitle }} <br /></h3>
+    <h5 class="text-center"> {{ article.category }} </h5>
     <!-- <h5>Abstract</h5> -->
     <p>{{ article.abstract }} <br /></p>
     <!-- <h5>Body</h5> -->
