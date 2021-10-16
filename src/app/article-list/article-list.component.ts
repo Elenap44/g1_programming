@@ -15,22 +15,22 @@ export class ArticleListComponent implements OnInit {
   articleList!: Article[];
   article!: Article;
 
-  constructor(public newLogInService: LoginService, public newNewsService:NewsService) { 
+  constructor(public loginService: LoginService, public newsService: NewsService) { 
     this.selectedCategory= 'All';
     this.article = {
-      
     id: 0,
-    image_media_type: "",
-    image_data: "",
     title: "",
     subtitle: "",
+    category: "",
     abstract: "", 
     body: "",
-    category: "",
+    image_data: "",
+    image_media_type: "",
     thumbnail_data: "",
     thumbnail_media_type: "",
     file_input: ""
-    }
+    };
+
     this.articleList= [this.article];
 
   }
@@ -38,22 +38,21 @@ export class ArticleListComponent implements OnInit {
   ngOnInit(): void {
     this.getServerArticles();
     for (let article of this.articleList){
-      console.log(this.article)
+      console.log(article)
     }
   }
 
-
   getServerArticles(){
-    this.newNewsService.getArticles().subscribe(list=>this.articleList= list);
+    this.newsService.getArticles().subscribe(list=>this.articleList= list);
   }
   
   setCategory(category:string){
     this.selectedCategory = category;
   }
 
-  deleteArticle(article:Article){
+  deleteArticle(article:Article){ //?????????????? TODO 
     let notification;
-    this.newNewsService.deleteArticle(article).subscribe(i=>{
+    this.newsService.deleteArticle(article).subscribe(i=>{
       notification = i
       console.log(i)
     });
