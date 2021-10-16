@@ -1,75 +1,76 @@
 <style>
-    body {
-      margin: 100px;
-    }
-  </style>
-  
-  <body>
-    <h1 class="text-center mb-3 col">Article Title</h1> 
-    <form #articleForm="ngForm">
-      <div class="mb-3 col">
-        <label for="articleTitle" class="form-label">Title*</label>
-        <input
-          name="title"
-          type="input"
-          class="form-control"
-          id="articleTitle"
-          placeholder="Article Title comes here"
-          [(ngModel)]="article.title"
-        />
-      </div>
-      <div class="mb-3 col">
-        <label for="articleSubtitle" class="form-label">Subtitle*</label>
-        <input
-          name="title"
-          type="input"
-          class="form-control"
-          id="articleSubtitle"
-          placeholder="Article Subtitle comes here"
-          [(ngModel)]="article.subtitle"
-        />
-      </div>
-      <div class="mb-3 col">
-        <select class="form-select mb-3" aria-label="Select article category">
-          <option selected>Select a category</option>
-          <option value="economy">Economy</option>
-          <option value="sport">Sport</option>
-          <option value="nature">Nature</option>
-        </select>
-      </div>
-      <div class="mb-3 col">
-        <label for="formFile" class="form-label"
-          >Choose a category of the article</label
-        >
-        <input class="form-control" type="file" id="formFile" />
-      </div>
-      <div class="mb-3 col">
-        <label for="abstract" class="form-label">Abstract*</label>
-        <textarea class="form-control" id="abstract" rows="3"></textarea>
-      </div>
-      <div class="mb-3 col">
-        <label for="body" class="form-label">Body*</label>
-        <textarea class="form-control" id="body" rows="6"></textarea>
-      </div>
-      <div class="mb-3 col text-right">
-        <button class="btn btn-primary btn-sm mr-1" type="submit">Save</button>
-        <button class="btn btn-secondary btn-sm mr-1" type="button">Back</button>
-      </div>
-      <br /><br />
-      <h1 class="col text-center">Preview of the article</h1>
-      <br /><br />
-      <div class="mb-3 col">
-        <!-- <h5>Title</h5> -->
-        <h2 class="text-center">{{ article.title }} <br /></h2>
-        <h4 class="text-center">Image comes here</h4>
-        <br />
-        <!-- <h5>Subtitle</h5> -->
-        <h3 class="text-center">{{ article.subtitle }} <br /></h3>
-        <!-- <h5>Abstract</h5> -->
-        <p>{{ article.abstract }} <br /></p>
-        <!-- <h5>Body</h5> -->
-        <p>{{ article.body }} <br /></p>
-      </div>
-    </form>
-  </body>
-  
+  body {
+    margin: 100px;
+  }
+</style>
+
+<body>
+  <h1 class="text-center mb-3 col">Article Title</h1>
+  <form #articleForm="ngForm">
+    <div class="mb-3 col">
+      <label for="articleTitle" class="form-label">Title*</label>
+      <input
+        name="title"
+        type="input"
+        class="form-control"
+        id="articleTitle"
+        placeholder="Article Title comes here"
+        [(ngModel)]="article.title"
+      />
+    </div>
+    <div class="mb-3 col">
+      <label for="articleSubtitle" class="form-label">Subtitle*</label>
+      <input
+        name="subtitle"
+        type="input"
+        class="form-control"
+        id="articleSubtitle"
+        placeholder="Article Subtitle comes here"
+        [(ngModel)]="article.subtitle"
+      />
+    </div>
+    <div class="mb-3 col">
+      <select class="form-select mb-3" required  name="category" [(ngModel)]="article.category">
+        <option selected>Select a category</option>
+        <option value="National">National</option>
+        <option value="Economy">Economy</option>
+        <option value="Sports">Sports</option>
+        <option value="Technology">Technology</option>
+      </select>
+    </div>
+    <div class="mb-3 col">
+      <label for="formFile" class="form-label"
+        >Choose a category of the article</label
+      >
+      <input class="form-control" type="file" id="formFile" name="image_data" [(ngModel)]="article.image_data" />
+    </div>
+    <div class="mb-3 col">
+      <label for="articleAbstract" class="form-label">Abstract*</label>
+      <textarea class="form-control" name="abstract" id="articleAbstract" rows="3" [(ngModel)]="article.abstract"></textarea>
+    </div>
+    <div class="mb-3 col">
+      <label for="body" class="form-label">Body*</label>
+      <textarea class="form-control" id="body" name="body" rows="6" [(ngModel)]="article.body"></textarea>
+    </div>
+    <div class="mb-3 col text-right">
+      <button class="btn btn-primary btn-sm mr-1" type="submit">Save</button>
+      <button class="btn btn-secondary btn-sm mr-1" type="button">Back</button>
+    </div>
+    <br /><br />
+    <h1 class="col text-center">Preview of the article</h1>
+    <br /><br />
+    <div class="mb-3 col">
+      <!-- <h5>Title</h5> -->
+      <h2 class="text-center">{{ article.title }} <br /></h2>
+      <img [src]="'data:' + article.image_media_type + ';base64,'+article.image_data " alt="article image" class="rounded mx-auto d-block">
+      <br />
+      <!-- <h5>Subtitle</h5> -->
+      <h3 class="text-center"> {{ article.subtitle }} </h3><br />
+      <h5 class="text-center"> {{ article.category }} </h5>
+      <!-- <h5>Abstract</h5> -->
+      <p>{{ article.abstract }} <br /></p>
+      <!-- <h5>Body</h5> -->
+      <p>{{ article.body }} <br /></p>
+    </div>
+  </form>
+</body>
