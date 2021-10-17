@@ -6,7 +6,7 @@
 
 <body>
   <h1 class="text-center mb-3 col">Article Title</h1>
-  <form #articleForm="ngForm"  (ngSubmit)="sendForm(article)">
+  <form #articleForm="ngForm" (ngSubmit)="sendForm(article)">
     <div class="mb-3 col">
       <label for="articleTitle" class="form-label">Title*</label>
       <input
@@ -39,10 +39,8 @@
       </select>
     </div>
     <div class="mb-3 col">
-      <label for="formFile" class="form-label"
-        >Choose a category of the article</label
-      >
-      <input class="form-control" type="file" id="formFile" name="image_data" [(ngModel)]="article.image_data" />
+      <label for="formFile" class="form-label">Choose a category of the article </label>
+      <input class="form-control" type="file" id="formFile" name="image_data" [(ngModel)]="article.image_data" (change)="fileChangeEvent($event)"/>
     </div>
     <div class="mb-3 col">
       <label for="articleAbstract" class="form-label">Abstract*</label>
@@ -53,8 +51,7 @@
       <textarea class="form-control" id="body" name="body" rows="6" [(ngModel)]="article.body"></textarea>
     </div>
     <div class="mb-3 col text-right">
-      <button class="btn btn-primary btn-sm mr-1" type="submit">Save</button>
-      <button class="btn btn-secondary btn-sm mr-1" type="button">Back</button>
+      <button class="btn btn-primary btn-sm mr-1" type="submit" >Save</button>
     </div>
     <br /><br />
     <h1 class="col text-center">Preview of the article</h1>
