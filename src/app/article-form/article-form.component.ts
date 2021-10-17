@@ -67,6 +67,7 @@ export class ArticleFormComponent implements OnInit {
           this.alerts.push({
             message: 'Article has been created'
           });
+          this.router.navigate(['/articleView/' + article.id]);
         },
         error => { 
           this.alerts.push({

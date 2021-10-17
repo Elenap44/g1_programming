@@ -9,25 +9,16 @@
   <form #articleForm="ngForm" (ngSubmit)="sendForm(article)">
     <div class="mb-3 col">
       <label for="articleTitle" class="form-label">Title*</label>
-      <input
-        name="title"
-        type="input"
-        class="form-control"
-        id="articleTitle"
-        placeholder="Article Title comes here"
-        [(ngModel)]="article.title"
-      />
+      <input name="title" type="input" class="form-control" id="articleTitle" placeholder="Article Title comes here"
+        [(ngModel)]="article.title"/>
     </div>
     <div class="mb-3 col">
       <label for="articleSubtitle" class="form-label">Subtitle*</label>
-      <input
-        name="subtitle"
-        type="input"
-        class="form-control"
-        id="articleSubtitle"
-        placeholder="Article Subtitle comes here"
-        [(ngModel)]="article.subtitle"
-      />
+      <input name="subtitle" type="input" class="form-control" id="articleSubtitle" placeholder="Article Subtitle comes here"
+        [(ngModel)]="article.subtitle" />
+    </div>
+    <div class="mb-3 col">
+      <label for="formFile" class="form-label">Choose a category of the article </label>
     </div>
     <div class="mb-3 col">
       <select class="form-select mb-3" required  name="category" [(ngModel)]="article.category">
@@ -39,7 +30,7 @@
       </select>
     </div>
     <div class="mb-3 col">
-      <label for="formFile" class="form-label">Choose a category of the article </label>
+      <label for="formFile" class="form-label">Choose an image for the article </label>
       <input class="form-control" type="file" id="formFile" name="image_data" [(ngModel)]="article.image_data" (change)="fileChangeEvent($event)"/>
     </div>
     <div class="mb-3 col">
@@ -51,7 +42,7 @@
       <textarea class="form-control" id="body" name="body" rows="6" [(ngModel)]="article.body"></textarea>
     </div>
     <div class="mb-3 col text-right">
-      <button class="btn btn-primary btn-sm mr-1" type="submit" >Save</button>
+      <button class="btn btn-primary btn-sm mr-1" type="submit" [disabled]="!articleForm.form.valid" >Save</button>
     </div>
     <br /><br />
     <h1 class="col text-center">Preview of the article</h1>
