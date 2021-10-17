@@ -17,7 +17,7 @@
     <div class="card col-lg-4 col-md-6 col-sm-12" *ngFor="let article of articleList | filter:term | category: selectedCategory">
       <div>
           <img *ngIf="article.thumbnail_image" [routerLink]="['/articleView/'+ article.id]" [ngClass]="{'router-link-active': true }"
-          [src]="'data:' + article.thumbnail_media_type + ';base64,'+article.thumbnail_image " alt="Article thumbnail" class="card-img-top">
+          [src]="'data:' + article.thumbnail_media_type + ';base64,' + article.thumbnail_image " alt="Article thumbnail" class="card-img-top">
       </div>
       <div class="card-body">
         <h4 [routerLink]="['/articleView/' + article.id]" [ngClass]="{ 'router-link-active': true }" class="title">

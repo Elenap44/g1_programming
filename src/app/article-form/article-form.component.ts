@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Article } from '../interfaces/article';
 import { NewsService } from '../services/news.service';
-import { Alerts } from '../interfaces/alerts';
 import { ActivatedRoute, Router } from '@angular/router'
 import * as _ from 'lodash';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-form',
@@ -15,14 +15,12 @@ export class ArticleFormComponent implements OnInit {
   article: Article;
   articleList!: Article[];
   @ViewChild('articleForm') articleForm: any;
-  alerts: Alerts[];
   imageError!: string | null;
   isImageSaved!: boolean;
   cardImageBase64!: string; 
 
-  constructor(public newsService: NewsService, public router: Router, public route: ActivatedRoute) {
+  constructor(public newsService: NewsService, public router: Router, public route: ActivatedRoute, private _sanitizer: DomSanitizer) {
     this.article = {
-      id: 0,
       title: "",
       subtitle: "",
       category: "",
@@ -34,19 +32,18 @@ export class ArticleFormComponent implements OnInit {
       thumbnail_media_type: "",
       file_input: "" 
     };
-    this.alerts = [];
     this.cardImageBase64;
     this.isImageSaved;
-    this.article.image_media_type 
-    this.article.image_data
+    this.article.image_media_type;
+    this.article.image_data;
    }
 
   ngOnInit(): void {
 
     this.route.paramMap.subscribe(p => {
-      const pId = p.get('articleId');
-      if(pId != null){
-        this.newsService.getArticle(+pId).subscribe(
+      const pid = p.get('articleId');
+      if(pid != null){
+        this.newsService.getArticle(+pid).subscribe(
           article => {
             this.article = article;
             this.article.file_input = this.article.image_data;
@@ -60,42 +57,39 @@ export class ArticleFormComponent implements OnInit {
     })
   }
 
-  sendForm(article: Article): void {
-    if (this.article.id == undefined) {
+  sendForm(article:Article): void {
+    if(this.article.id == undefined ){
       this.newsService.createArticle(article).subscribe(
         article => {
-          this.alerts.push({
-            message: 'Article has been created'
-          });
+          window.alert('The article has been created.');
           this.router.navigate(['/articleView/' + article.id]);
         },
-        error => { 
-          this.alerts.push({
-            message: 'Error, article was not created',
-          });
-        },
-        () => {
-        }
-      );
-    } 
-    else {
-      this.newsService.updateArticle(article).subscribe(
-        article => {
-          this.alerts.push({
-            message: 'Article has been updated'
-          });
-          this.router.navigate(['/articleView/' + article.id])
-        },
         error => {
-          this.alerts.push({
-            message: 'Error, the article has not been updated',
-          })
+          window.alert('Error, the article has not been created.');
         },
-        () => {
+        () => { 
+          console.log('The article has been created');
         }
       );
     }
+    else {
+      this.newsService.updateArticle(article).subscribe(
+        article => { 
+          window.alert('The article has been updated.');
+          this.router.navigate(['/articleView/' + article.id]);
+        },
+        error => { // Error treatment
+          window.alert('Error, the article has not been updated.');
+        },
+        () => {
+          console.log('The article has been updated');
+        }
+      );
+    }
+
   }
+
+  
 
   fileChangeEvent(fileInput: any) {
     this.imageError = null;

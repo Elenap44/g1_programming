@@ -50,7 +50,7 @@
     <div class="mb-3 col">
       <!-- <h5>Title</h5> -->
       <h2 class="text-center">{{ article.title }} <br /></h2>
-      <img [src]="'data:' + article.image_media_type + ';base64,'+article.image_data " alt="article image" class="rounded mx-auto d-block">
+      <img [src]="'data:' + article.thumbnail_media_type + ';base64,' + article.thumbnail_image " alt="article image" class="rounded mx-auto d-block">
       <br />
       <!-- <h5>Subtitle</h5> -->
       <h3 class="text-center"> {{ article.subtitle }} </h3><br />

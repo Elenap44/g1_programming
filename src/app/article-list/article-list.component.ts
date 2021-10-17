@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../interfaces/article';
-import { Alerts } from '../interfaces/alerts'
 import { LoginService } from '../services/login.service';
 import { NewsService } from '../services/news.service';
 
@@ -16,7 +15,6 @@ export class ArticleListComponent implements OnInit {
   term: string;
   articleList!: Article[];
   article!: Article;
-  alerts!: Alerts[];
 
   constructor(public loginService: LoginService, public newsService: NewsService) { 
     this.selectedCategory= 'All';
@@ -59,14 +57,10 @@ export class ArticleListComponent implements OnInit {
   deleteArticle(article:Article) {
     if(confirm("Do you want to delete the article: " + article.title + " ?" )) {
       this.newsService.deleteArticle(article).subscribe(article => { 
-          this.alerts.push({
-            message: 'The article has been deleted',
-          });
+        window.alert('The article has been deleted.');
           this.getServerArticles(); },
           error => {
-            this.alerts.push({
-              message: 'Error, the article has not been deleted',
-            });
+            window.alert('Error, the article has not been deleted.');
             this.getServerArticles(); },
             ()=>{
               console.log('The article has been deleted');
